@@ -1,14 +1,16 @@
 import sys
 
 # INPUTTING THE INITIAL ROLL
-a=5
-b=5
-c=1
+a=6
+b=6
+c=6
+print "YOUR INPUT A={} B={} C={}".format(a,b,c)
 sum=a+b+c
 
 
-for i in range(1,3):
-    # THROWING ONLY ONE DICE
+for i in range(1,4):
+
+    # IF i==1 THROWING ONLY ONE DICE
     if i==1:
         l1=[]
         # CASE A: FOR THROWING DICE A
@@ -36,7 +38,7 @@ for i in range(1,3):
             pvC=pvC+(1/6.0)*vC
         l1.append(pvC)
 
-    # THROWING TWO DICES
+    # IF i==2 THROWING TWO DICES
     if i==2:
 
         p = 0
@@ -63,8 +65,22 @@ for i in range(1,3):
                     pac = pac + (1 / 36.0) * sumac
                     l1.append(pac)
 
+    # IF i==3 THROWING THREE DICES
+    if i==3:
+        sumabc=0
+        pabc=0
+        for i in range(1, 7):
+            for j in range(1, 7):
+                for k in range(1, 7):
+                    sumabc=i+j+k
+                    if sumabc>a+b+c:
+                        pabc=pabc+(1/216.0)*sumabc
+        l1.append(pabc)
+
+
 
         maxPiVi=max(l1)
+        #print maxPiVi
         if a==b==c:
             print "YOU WON"
         else:
@@ -76,13 +92,18 @@ for i in range(1,3):
                 print "THROW DICE C"
 
             elif maxPiVi == pab:
-                print "THROW DICE AB"
+                print "THROW DICE A and B"
 
             elif maxPiVi == pbc:
-                print "THROW DICE BC"
+                print "THROW DICE B and C"
+
+            elif maxPiVi==pac:
+                print "THROW DICE A and C"
 
             else:
-                print "THROW DICE AC"
+                print "THROW DICE A, B, AND C"
+
+
 
 
 
